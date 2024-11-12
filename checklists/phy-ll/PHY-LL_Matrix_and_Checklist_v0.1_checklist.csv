@@ -5,7 +5,7 @@ Priority,ChecklistID,TestName,Criteria,SpecReference,Notes
 ,PHY-4.1,PCS Decoder,The PCS Decoder is described in Table 3-5,UEC PHY v0.81 Section 3.3,
 ,PHY-3.1,PCS Encoder,The PCS Encoder is described in Table 3-6,UEC PHY v0.81 Section 3.3,
 ,PHY-2.3,CtlOS Indication to MAC,RS sends an indication to the MAC upon reception of a CtlOS,UEC PHY v0.81 Section 3.4,Should this be removed because it isn't a testable interface?
-,PHY-3.2,Transmit CtlOS during MAC frames,Transmission of CtlOS does not corrupt 802.3 packet transfers,UEC PHY v0.81 Section 3.4.1,
+,PHY-3.2,Transmit CtlOS during MAC frames,Transmission of CtlOS does not corrupt 802.3 packet transfers,,
 ,PHY-3.3,DIC Calcution during CtlOS,CtlOS does not impact Deficit Idle Count (DIC),UEC PHY v0.81 Section 3.4.1,
 ,PHY-2.4,MII Receive,CtlOS control character followed by seven data octets is a permissible encoding,UEC PHY v0.81 Section 3.4.2,Necessary?  This can be assumed to pass if CtlOS are received correctly.
 ,PHY-4.2,RS DATA_VALID and CtlOS,Received CtlOS does not impact RS DATA_VALID,UEC PHY v0.81 Section 3.4.2,
