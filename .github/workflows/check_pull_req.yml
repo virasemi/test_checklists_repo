@@ -13,10 +13,12 @@ jobs:
 
       - name: Run Tests
         run: |
+          pwd
           echo "Running tests on the pull request"
           git clone git@github.com:virasemi/uec-compliance.git        
           cd uec-compliance
           git checkout feature-schema-tool
+          pwd
           python3 schema-tool/schema-tool.py --infile ../../checklists/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1.xlsx
 
 
