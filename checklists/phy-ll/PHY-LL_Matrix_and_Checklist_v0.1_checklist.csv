@@ -1,0 +1,27 @@
+Priority,ChecklistID,TestName,Criteria,SpecReference,Notes
+,PHY-1.1,PHY Type,The PHY type must be listed in section 2.2,UEC PHY v0.81 Section 2.2,
+,PHY-2.1,Control Ordered Set Format (MII),The CtlOS have a Lane0 control character of 0x5C and D4[3:0] set to 0x6.,UEC PHY v0.81 Section 3.2,Should this be removed because it isn't a testable interface?
+,PHY-2.2,Control Ordered Set Format (PCS),The CtlOS have a block type of 0x4B and bits 10 to 65 taken from D1 through D7.,UEC PHY v0.81 Section 3.3,
+,PHY-4.1,PCS Decoder,The PCS Decoder is described in Table 3-5,UEC PHY v0.81 Section 3.3,
+,PHY-3.1,PCS Encoder,The PCS Encoder is described in Table 3-6,UEC PHY v0.81 Section 3.3,
+,PHY-2.3,CtlOS Indication to MAC,RS sends an indication to the MAC upon reception of a CtlOS,UEC PHY v0.81 Section 3.4,Should this be removed because it isn't a testable interface?
+,PHY-3.2,Transmit CtlOS during MAC frames,Transmission of CtlOS does not corrupt 802.3 packet transfers,UEC PHY v0.81 Section 3.4.1,
+,PHY-3.3,DIC Calcution during CtlOS,CtlOS does not impact Deficit Idle Count (DIC),UEC PHY v0.81 Section 3.4.1,
+,PHY-2.4,MII Receive,CtlOS control character followed by seven data octets is a permissible encoding,UEC PHY v0.81 Section 3.4.2,Necessary?  This can be assumed to pass if CtlOS are received correctly.
+,PHY-4.2,RS DATA_VALID and CtlOS,Received CtlOS does not impact RS DATA_VALID,UEC PHY v0.81 Section 3.4.2,
+,PHY-3.4,No CtlOS during link fault signaling,Does not transmit CtlOS if link fault status indicates Local Fault or Remote Fault,UEC PHY v0.81 Section 3.4.3,
+,PHY-5.1,FEC Statistics,The FEC statistics listed in 4.2 are included and accessible,UEC PHY v0.81 Section 4.2,
+,PHY-5.2,UCR Estimation,"Calculate MTBPE, UCRest1, UCRest2, or UCRest3",UEC PHY v0.81 Section 4.2,Is this correct?
+,LL-LLR-1.1,Preamble,LLR-eligible frames use the preamble in 1.2.1.1,UEC LL LLR v0.8 Section 1.2.1,
+,LL-LLR-2.1,Interface Modifications,"Interface modifications between the MAC Client, LLR, and MAC Control",UEC LL LLR v0.8 Section 1.2.2,Should this be removed because it isn't a testable interface?  
+,LL-LLR-3.1,Filtering,Unexpected LLR-Eligible frames are not passed to the MAC Client,UEC LL LLR v0.8 Section 1.2.3,
+,LL-LLR-4.1,CtlOS types,Supports the CtlOS types in Table 1-3,UEC LL LLR v0.8 Section 1.2.3.1.1,
+,LL-LLR-4.2,CtlOS Spacing,"Max rate of every 400B, min rate of every 17296B",UEC LL LLR v0.8 Section 1.2.3.1.1,
+,LL-LLR-4.3,No CtlOS during first 256B of frame,Does not transmit CtlOS during first 256 bytes of frame,UEC LL LLR v0.8 Section 1.2.3.1.1,
+,LL-LLR-4.4,Two CtlOS in the same frame,Two CtlOS in the same frame are spaced apart by 2kB of data,UEC LL LLR v0.8 Section 1.2.3.1.1,
+,LL-LLR-5.1,LLR Configuration Registers,Registers listed in Table 1-5 are accessible to management software,UEC LL LLR v0.8 Section 1.2.4,
+,LL-LLR-6.1,Transmit State Machine,The transmit state machine in Figure 1-3 is implemented,UEC LL LLR v0.8 Section 1.2.5,Break into multiple tests
+,LL-LLR-7.1,Tx LLR handles LLR-desired frames,The Tx LLR handles LLR-desired frames as described in Section 1.2.5,UEC LL LLR v0.8 Section 1.2.5,Break into multiple tests
+,LL-LLR-8.1,LLR_ACK/LLR_NACK Sequence Number,The LLR_ACK/LLR_NACK sequence number is the most recently received LLR-eligible frame,UEC LL LLR v0.8 Section 1.2.6,
+,LL-LLR-8.2,ACK/NACK Transmit State Machine,The ACK/NACK transmit state machine in Figure 1-3 is implemented,UEC LL LLR v0.8 Section 1.2.6,Break into multiple tests
+,LL-NEG,Support 802.1 LLDP,,,

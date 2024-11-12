@@ -1,0 +1,11 @@
+MatrixID,Technology/Feature/Setting,Protocol/API,Value,Conditions,AI BASE,AI EXTENDED,HPC,ChecklistIDs,Notes
+PHY,PHY Type,,Bool,,Mandatory,Mandatory,Mandatory,PHY-1.1,
+PHY-1,Control Ordered Sets ,,Bool,"[LL-LLR, LL-CBFC]",Conditional,Conditional,Conditional,"[PHY-2.1, PHY-2.2, PHY-2.3, PHY-2.4, PHY-3.1, PHY-3.2, PHY-3.3, PHY-3.4, PHY-4.1, PHY-4.2]",
+PHY-2,FEC statistics for prediction of link quality,,Bool,,Optional,Optional,Optional,"[PHY-5.1, PHY-5.2]",
+LL-LLR,LLR,,Bool,,Optional,Optional,Optional,,List all LL-LLR tests and PHY tests associated with PHY-1?
+LL-CBFC,CBFC,,Bool,,Optional,Optional,Optional,,
+LL-CBFC-1,CBFC option 1 - placeholder for now,,Bool,,Optional,Optional,Optional,,
+LL-NEG,Link Layer Negotiation,,,,,,,,
+,,,,,,,,,Mandatory
+,,,,,,,,,Conditional = An optional feature that relies on this technology will turn this into a mandatory feature
+,,,,,,,,,Optional
