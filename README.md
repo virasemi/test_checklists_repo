@@ -19,7 +19,7 @@ Only after this target repo can be securely cloned inside initiator repos Action
 
 ## Triggers
 
-only pull requests triggers Pipeline .yaml script.
+Only pull requests triggers Pipeline .yaml script.
 
 
 ## Jobs
