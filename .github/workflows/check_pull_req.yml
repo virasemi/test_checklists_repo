@@ -20,7 +20,7 @@ jobs:
           git checkout feature-schema-tool
           pwd
           sudo make dockerimage 
-          sudo ./run.sh schema-tool/schema-tool.py --infile checklists/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1.xlsx
+          sudo ./run.sh schema-tool/schema-tool.py --infile checklists/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1_checklist.csv
 
 
   merge-actions:
