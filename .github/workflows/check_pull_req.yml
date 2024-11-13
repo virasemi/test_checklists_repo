@@ -24,7 +24,7 @@ jobs:
       - name: Set up SSH Key for GitHub
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.test_checklist_secret }}
+          ssh-private-key: ${{ secrets.TEST_CHECKLIST_SECRET }}
 
       - name: Run Tests
         run: |
