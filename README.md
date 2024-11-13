@@ -42,7 +42,7 @@ Python3 and Pip3.
           sudo apt update
           sudo apt install -y python3 python3-pip
 ```
-Python3 and Pip3 must be used in subsequent steps.
+Python3 and Pip3 will be used in subsequent steps.
 
 
 ### run-tests
