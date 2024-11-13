@@ -25,7 +25,7 @@ jobs:
         run: |
           pwd
           echo "Running tests on the pull request"
-          git clone git@github.com:virasemi/uec-compliance.git        
+          git clone https://github.com/virasemi/uec-compliance.git       
           cd uec-compliance
           git checkout feature-schema-tool
           pwd
