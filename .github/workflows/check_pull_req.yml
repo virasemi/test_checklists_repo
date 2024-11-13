@@ -19,7 +19,7 @@ jobs:
           cd uec-compliance
           git checkout feature-schema-tool
           pwd
-          python3 schema-tool/schema-tool.py --checklist ../checklists/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1_checklist.csv
+          ./run.sh schema-tool/schema-tool.py --infile checklists/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1.xlsx
 
 
   merge-actions:
