@@ -19,8 +19,10 @@ jobs:
           cd uec-compliance
           git checkout feature-schema-tool
           pwd
+          mkdir new_checklist
+          cp -r ../checklists/* new_checklist/
           sudo make dockerimage
-          ./run.sh schema-tool/schema-tool.py --infile ../checklists/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1.xlsx
+          ./run.sh schema-tool/schema-tool.py --infile new_checklist/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1.xlsx
 
   merge-actions:
     runs-on: self-hosted
