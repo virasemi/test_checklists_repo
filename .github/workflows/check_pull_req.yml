@@ -24,7 +24,7 @@ jobs:
           sudo make dockerimage
           pwd
           pwd
-          sudo ./run.sh schema-tool/schema-tool.py --infile new_checklist/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1.xlsx 2>&1 | sudo tee output.log
+          sudo ./run.sh schema-tool/schema-tool.py --infile new_checklist/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1.xlsx &> output.log
 
   merge-actions:
     runs-on: self-hosted
