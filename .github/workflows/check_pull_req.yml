@@ -21,11 +21,16 @@ jobs:
       - name: Check out the code
         uses: actions/checkout@v3
 
+      - name: Set up SSH Key for GitHub
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SECRET_NAME }}
+
       - name: Run Tests
         run: |
           pwd
           echo "Running tests on the pull request"
-          git clone https://github.com/virasemi/uec-compliance.git       
+          git clone git@github.com:virasemi/uec-compliance.git       
           cd uec-compliance
           git checkout feature-schema-tool
           pwd
