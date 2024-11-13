@@ -3,25 +3,22 @@
 
 ## Note
 
-Before pipeline setup, ssh public and private keys must be generated using this command.
+Before setting up the pipeline, SSH public and private keys must be generated using the following command:
 ```
 ssh-keygen -p -m PEM -f github-actions-key
 ```
-Public key must be added to target repos 
-(in our case uec-compliance) Settings/Deploy keys.
+- The public key must be added to the target repositories (in our case, uec-compliance) under Settings > Deploy keys
+- The private key must be added to the initiating repository (in our case, test_checklists_repo) under Settings > Secrets and variables > Actions secrets
 
-Private key must be added to initiator repos
-(in our case test_checklists_repo) Settings/Secrets and variables/Actions keys.
 
-Only after this target repo can be securely cloned inside initiator repos Actions.
+Only after this setup can the target repository be securely cloned within the initiating repository's Actions.
 
-Please also note that some steps are delibirately done using bash instead of
-GitHub Actions in order to easy reproduce in other systems.
+Please also note that some steps are deliberately done using Bash instead of GitHub Actions in order to make it easier to reproduce the process on other systems.
 
 
 ## Triggers
 
-only pull requests triggers Pipeline .yaml script.
+Only pull requests trigger the pipeline `.yaml` script.
 
 
 ## Jobs
@@ -62,8 +59,8 @@ The SSH private key is passed using the secret `TEST_CHECKLIST_SECRET`. This is 
 securely cloning private repositories or accessing remote resources via SSH. The SSH key is 
 added to the SSH agent, enabling Git operations to be authenticated without password prompts.
 
-It is essential to first add private key (secret) into cloning repository's actions as described
-in 'Note' and specify a name for the secret in Yaml:
+It is essential to first add private key (secret) into initiating repository's Actions as described
+in 'Note' above, and specify a the secret name in YAML:
 
 ```
       - name: Set up SSH Key for GitHub
@@ -75,19 +72,19 @@ in 'Note' and specify a name for the secret in Yaml:
 
 #### Git Clone
 
-Clones the uec-compliance repository using SSH, after executes git checkout feature-schema-tool to switch 
-to the specified branch in the uec-compliance repository. Also runs pip3 install -r requirements.txt
-to install the dependencies defined in the requirements.txt file of the uec-compliance repository.
+Clones the `uec-compliance` repository using SSH, then executes `git checkout feature-schema-tool` to switch 
+to the specified branch in the `uec-compliance` repository. Also runs `pip3 install -r requirements.txt`
+to install the dependencies defined in the `requirements.txt` file of the `uec-compliance` repository.
 
 #### infile Option Check
 
-Runs the schema-tool/schema-tool.py script with the --infile option, 
-specifying an Excel file (PHY-LL_Matrix_and_Checklist_v0.1.xlsx).
+Runs the `schema-tool/schema-tool.py` script with the `--infile` option, 
+specifying an Excel file (`PHY-LL_Matrix_and_Checklist_v0.1.xlsx`).
 
 
 #### checklist Option Check
 
-Runs the schema-tool/schema-tool.py script again, this time with the --checklist option, 
-pointing to a CSV file (PHY-LL_Matrix_and_Checklist_v0.1_checklist.csv).
+Runs the `schema-tool/schema-tool.py` script again, this time with the `--checklist` option, 
+pointing to a CSV file (`PHY-LL_Matrix_and_Checklist_v0.1_checklist.csv`).
 
 
