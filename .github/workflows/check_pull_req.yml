@@ -10,7 +10,7 @@ jobs:
       - name: Install bridge-utils
         run: |
           sudo apt update
-          sudo apt install iproute bridge-utils
+          sudo apt install -y iproute2 bridge-utils
 
       - name: Create TAP Interfaces
         run: |
