@@ -31,6 +31,8 @@ jobs:
           sudo ip addr add 192.168.100.1/24 dev br0
           sudo ip addr add 192.168.100.10/24 dev tap0
           sudo ip addr add 192.168.100.11/24 dev tap1
+          bridge link
+          brctl show
 
   run_tests:
     runs-on: ubuntu-latest
