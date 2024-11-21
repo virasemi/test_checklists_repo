@@ -1,23 +1,37 @@
-name: Pull Request Workflow
+name: bridge tap workflow
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
+  workflow_dispatch:  # This replaces the pull_request trigger with a manual trigger
 
 jobs:
   setup-environment:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == false || github.event.pull_request.merged == true
     steps:
-      - name: Install Python and Pip
+      - name: Install bridge-utils
         run: |
           sudo apt update
-          sudo apt install -y python3 python3-pip
+          sudo apt install iproute bridge-utils
 
-  run-tests:
+      - name: Create TAP Interfaces
+        run: |
+          sudo ip tuntap add dev tap0 mode tap user $USER
+          sudo ip tuntap add dev tap1 mode tap user $USER
+
+      - name: Create the Bridge
+        run: |
+          sudo ip link set tap0 up
+          sudo ip link set tap1 up
+
+      - name: Bring the Bridge Up
+        run: |
+          sudo ip link set br0 up
+          sudo ip addr add 192.168.100.1/24 dev br0
+          sudo ip addr add 192.168.100.10/24 dev tap0
+          sudo ip addr add 192.168.100.11/24 dev tap1
+
+  run_tests:
     runs-on: ubuntu-latest
     needs: setup-environment
-    if: github.event.pull_request.merged == false || github.event.pull_request.merged == true
     steps:
       - name: Check out the code
         uses: actions/checkout@v3
@@ -27,23 +41,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.TEST_CHECKLIST_SECRET }}
 
-      - name: Git Clone
+      - name: check tap
         run: |
           pwd
-          git clone git@github.com:virasemi/uec-compliance.git       
-          cd uec-compliance
-          git checkout feature-schema-tool
-          pip3 install -r requirements.txt
-
-      - name: infile option check
-        run: |
-          cd uec-compliance
-          pwd
-          python3 schema-tool/schema-tool.py --infile ../checklists/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1.xlsx
-
-      - name: checklist option check
-        run: |
-          cd uec-compliance
-          pwd
-          python3 schema-tool/schema-tool.py --checklist ../checklists/phy-ll/PHY-LL_Matrix_and_Checklist_v0.1_checklist.csv
-
+          ping -I tap0 192.168.100.11          
