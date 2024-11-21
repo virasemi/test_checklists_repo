@@ -21,8 +21,8 @@ jobs:
 
       - name: Create the Bridge
         run: |
-          sudo ip link set tap0 master br0
-          sudo ip link set tap1 master br0
+          sudo ip link set tap0 master docker0
+          sudo ip link set tap1 master docker0
 
       - name: Bring the Bridge Up
         run: |
